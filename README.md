@@ -14,7 +14,7 @@ npm run preview   # serve the production build locally
 npm run deploy    # build + publish to Cloudflare Pages
 ```
 
-Deployment and domain setup: see [DEPLOY.md](DEPLOY.md).
+Deployment and domain setup: see [DEPLOY.md](DEPLOY.md). Project context for Claude: [CLAUDE.md](CLAUDE.md). History: [docs/CHANGELOG.md](docs/CHANGELOG.md).
 
 ## Editing content
 
