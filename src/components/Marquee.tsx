@@ -1,0 +1,48 @@
+const skills = [
+  'Python',
+  'Go',
+  'TypeScript',
+  'React',
+  'Java',
+  'FastAPI',
+  'WebSockets',
+  'AWS',
+  'Cloudflare',
+  'Docker',
+  'MongoDB',
+  'Salesforce',
+  'PyTorch',
+  'Machine Learning',
+  'Prompt Engineering',
+  'Stochastic Modelling',
+  'Portfolio Optimisation',
+]
+
+/* One half of the loop — rendered twice so the -50% translate lands on an
+   identical frame and the loop is seamless. */
+function Half() {
+  return (
+    <div className="flex shrink-0 items-center">
+      {skills.map((skill) => (
+        <span
+          key={skill}
+          className="flex shrink-0 items-center whitespace-nowrap text-sm uppercase tracking-[0.25em] text-mist"
+        >
+          <span className="px-8">{skill}</span>
+          <span className="text-white/30">·</span>
+        </span>
+      ))}
+    </div>
+  )
+}
+
+export default function Marquee() {
+  return (
+    <div className="relative z-10 overflow-hidden border-y border-white/10 bg-ink/60 py-5 backdrop-blur-sm" aria-hidden="true">
+      <div className="marquee-track flex w-max">
+        <Half />
+        <Half />
+      </div>
+    </div>
+  )
+}
