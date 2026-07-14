@@ -1,3 +1,4 @@
+import type { MouseEvent } from 'react'
 import useActiveSection from '../hooks/useActiveSection'
 
 export const sections = [
@@ -8,6 +9,12 @@ export const sections = [
 ]
 
 const ids = sections.map((s) => s.id)
+
+/* Scroll to the section without putting #hash in the URL. */
+function scrollToSection(event: MouseEvent, id: string) {
+  event.preventDefault()
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+}
 
 export default function SideNav() {
   const active = useActiveSection(ids)
@@ -24,6 +31,7 @@ export default function SideNav() {
             <li key={section.id}>
               <a
                 href={`#${section.id}`}
+                onClick={(e) => scrollToSection(e, section.id)}
                 className="group flex items-center gap-3 py-1"
                 aria-current={isActive ? 'true' : undefined}
                 aria-label={section.label}

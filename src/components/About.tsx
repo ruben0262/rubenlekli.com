@@ -2,9 +2,9 @@ import FadeUp from './FadeUp'
 
 const facts = [
   { value: '2021', label: 'Building software since' },
-  { value: '24/7', label: 'Live systems in production' },
+  { value: '83.6%', label: 'Typical speed-up measured on client workflows' },
   { value: '10+', label: 'Production systems shipped' },
-  { value: '5', label: 'Languages shipped to production' },
+  { value: '7', label: 'Languages shipped to production' },
 ]
 
 export default function About() {

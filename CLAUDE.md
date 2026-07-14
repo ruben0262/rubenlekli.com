@@ -41,6 +41,8 @@ Screenshot-verify changes before calling them done: `npm run build`, `npx vite p
 - PayPal tip link: `paypal.me/rubzl` (set by Ruben — confirm it stays current).
 - Cloudflare Web Analytics: enabled from the dashboard (automatic setup), not in code.
 - Dashboard security toggles suggested: Always Use HTTPS, HSTS, Email Address Obfuscation, DNSSEC.
+- Pipeline project card has no link yet — plan for a public landing page lives in `d:\Projects\job-search\docs\PIPELINE_LANDING_PAGE_PLAN.md`; card gets the href when that ships.
+- Morioh card links `moriohbacktests.rubenlekli.com` (repo: `d:\Projects\backtesting_framework`); raw URL deliberately not shown on the card.
 
 ## Changelog rule
 Every non-trivial change gets an entry in `docs/CHANGELOG.md` (what/where/why, newest first). Update the section table above if sections change.

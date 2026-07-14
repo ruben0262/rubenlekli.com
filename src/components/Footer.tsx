@@ -10,7 +10,7 @@ export default function Footer() {
   return (
     <footer className="relative z-10 border-t border-white/10">
       <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-6 px-6 py-10">
-        <span className="text-xs text-mist">© {new Date().getFullYear()} Ruben Lekli</span>
+        <span className="text-xs text-mist">© 2021 Ruben Lekli</span>
         <ul className="flex flex-wrap gap-5 text-sm">
           {socials.map((social) => (
             <li key={social.label}>

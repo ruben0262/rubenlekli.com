@@ -2,6 +2,16 @@
 
 Newest first. Format: what / where / why.
 
+## 2026-07-14 — Morioh copy pass + client speed-up stat
+- Morioh card rewritten to match the other cards' register (was too spec-sheet): equities + digital assets (not just digital), role "Creator" → "Designer & Developer", grid/DSR jargon dropped for "institutional-grade validation built in to keep results honest".
+- Stats: "24/7 live systems" tile → "80% typical speed-up measured on client workflows". Ruben reports 55–109% measured across FlowSolutions client projects (CRM/data-entry/reporting/AI integrations); 80% chosen as the credible mid-range, "typical … measured" wording keeps it defensible.
+
+## 2026-07-14 — Morioh card, hash-free nav, stats
+- New project card: Morioh Backtesting (`src/data/projects.tsx`) — public hosted backtesting platform (Python/FastAPI engine + job queue, React/ECharts front end, walk-forward + DSR); links moriohbacktests.rubenlekli.com, label "Try Morioh live" (raw URL kept off the card by request). 4×4 grid logo mirrors the L1×L2 weighting grid.
+- Side nav scrolls via scrollIntoView with preventDefault — no more #intro etc. in the URL (`SideNav.tsx`). "Intro" label kept over "Contact": card flip delivers contact casually, per Ruben.
+- Languages-in-production stat 5 → 7 (Python, Go, TypeScript, JavaScript, Java, SQL, Pine Script). "Time/money saved for clients" stat considered and rejected: unmeasurable, invites scepticism.
+- Pipeline landing-page plan written to `d:\Projects\job-search\docs\PIPELINE_LANDING_PAGE_PLAN.md` (that repo's changelog updated too).
+
 ## 2026-07-13 — Security headers + project docs
 - Added `public/_headers`: strict CSP (self-only + Cloudflare analytics domains), X-Frame-Options DENY, nosniff, Referrer-Policy, Permissions-Policy. Static site needs nothing else code-side; dashboard toggles (HTTPS, HSTS, email obfuscation, DNSSEC) documented in DEPLOY.md discussion.
 - Added `CLAUDE.md` (project context) and this changelog.

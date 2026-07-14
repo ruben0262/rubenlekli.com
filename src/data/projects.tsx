@@ -33,6 +33,20 @@ const LeadOpsLogo = (
   </svg>
 )
 
+const MoriohLogo = (
+  <svg viewBox="0 0 48 48" width="40" height="40" {...stroke} aria-hidden="true">
+    <rect x="7" y="7" width="9" height="9" rx="1.5" fill="currentColor" stroke="none" opacity="0.9" />
+    <rect x="19.5" y="7" width="9" height="9" rx="1.5" />
+    <rect x="32" y="7" width="9" height="9" rx="1.5" fill="currentColor" stroke="none" opacity="0.35" />
+    <rect x="7" y="19.5" width="9" height="9" rx="1.5" fill="currentColor" stroke="none" opacity="0.5" />
+    <rect x="19.5" y="19.5" width="9" height="9" rx="1.5" fill="currentColor" stroke="none" opacity="0.9" />
+    <rect x="32" y="19.5" width="9" height="9" rx="1.5" />
+    <rect x="7" y="32" width="9" height="9" rx="1.5" />
+    <rect x="19.5" y="32" width="9" height="9" rx="1.5" fill="currentColor" stroke="none" opacity="0.35" />
+    <rect x="32" y="32" width="9" height="9" rx="1.5" fill="currentColor" stroke="none" opacity="0.7" />
+  </svg>
+)
+
 const LiquidityLogo = (
   <svg viewBox="0 0 48 48" width="40" height="40" {...stroke} aria-hidden="true">
     <path d="M6 38l10-12 8 6 12-18" />
@@ -74,11 +88,21 @@ export const projects: Project[] = [
     name: 'LeadOps',
     role: 'Lead Developer',
     description:
-      'AI-powered lead qualification platform. Qualifies inbound leads in real time across WhatsApp, Instagram, Messenger, Discord, Telegram, and Gmail with natural AI conversations — built on a Go backend with real-time WebSocket infrastructure.',
+      'AI-powered lead qualification platform. Qualifies inbound leads in real time across WhatsApp, Instagram, Messenger, Discord, Telegram, and Gmail with natural AI conversations, built on a Go backend with real-time WebSocket infrastructure.',
     tags: ['Go', 'AI agents', 'Multi-channel', 'Real-time'],
     href: 'https://leadops.flow-solutions.xyz',
     linkLabel: 'leadops.flow-solutions.xyz',
     logo: LeadOpsLogo,
+  },
+  {
+    name: 'Morioh Backtesting',
+    role: 'Designer & Developer',
+    description:
+      'Free public backtesting platform for equities and digital assets. Test single strategies or construct multi-factor portfolios, with institutional-grade validation built in to keep results honest, and interactive charts to explore them. Python engine, React front end, open for anyone to use.',
+    tags: ['Python', 'FastAPI', 'React', 'Quant tooling'],
+    href: 'https://moriohbacktests.rubenlekli.com',
+    linkLabel: 'Try Morioh live',
+    logo: MoriohLogo,
   },
   {
     name: 'Global Liquidity Research',
