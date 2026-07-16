@@ -61,8 +61,7 @@ export default function HeroCard() {
                   and AI systems that modern pipelines run on, while solving the
                   complex problems behind the interface. In markets, building my
                   own quantitative systems to research alpha, then testing ideas
-                  through backtesting, robustness checks, and optimization sequences
-                  before they face real markets.
+                  through backtesting, robustness checks, and optimization sequences.
                 </p>
               </div>
 
