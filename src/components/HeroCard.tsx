@@ -58,9 +58,9 @@ export default function HeroCard() {
                 <h1 className="text-4xl font-semibold tracking-tight sm:text-6xl">Ruben Lekli</h1>
                 <p className="mt-4 max-w-md text-sm leading-relaxed text-mist sm:text-base">
                   Building, managing, and maintaining platforms, web applications,
-                  and AI systems that real businesses rely on, while solving the
-                  complex problems behind the interface. In markets, I build my
-                  own quantitative systems to research alpha, then test ideas
+                  and AI systems that modern pipelines run on, while solving the
+                  complex problems behind the interface. In markets, building my
+                  own quantitative systems to research alpha, then testing ideas
                   through backtesting, robustness checks, and optimization sequences
                   before they face real markets.
                 </p>

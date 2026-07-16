@@ -29,22 +29,22 @@ export default function About() {
               products, web applications, platforms that talk to your customers while
               you sleep, pipelines that move data where it needs to be, and automation
               that turns a week of manual work into a button. I lead a small remote
-              engineering team and stay close to the hard parts from the first
-              architecture sketch to the moment the system is live and earning its keep.
+              engineering team and own the complex problems from the first architecture
+              sketch to the moment the system is live and earning its keep.
             </p>
             <p>
               The same thinking runs my work in markets. I build my own quantitative
               research systems, use them to look for alpha, and put my own capital behind
-              the ideas that survive. That means coming up with a thesis, taking it
+              the ideas that survive. That means generating strategy ideas, taking them
               apart through backtesting, robustness testing, and optimization sequences,
-              then asking whether it can survive real markets. Whether the problem is a
-              sales funnel or a portfolio, the craft is the same: turn messy data into
-              decisions you can trust, then automate the follow-through.
+              then asking whether they can operate in real markets. Whether the problem
+              is a sales funnel or a portfolio, the craft is the same: turn messy data
+              into decisions you can trust, then automate the follow-through.
             </p>
             <p>
-              I use AI tools such as Claude Code, Codex, and Copilot openly as part of
-              my daily toolchain. I treat them like any other engineering tool: useful,
-              powerful, and only as good as the review process around them.
+              I openly work with AI tools such as Claude Code, Codex, and Copilot which are part
+              of my daily toolchain, driven with the same discipline as any other
+              engineering tool, from architecture reviews to prompt evaluation pipelines.
             </p>
 
             <StealThisSite />
