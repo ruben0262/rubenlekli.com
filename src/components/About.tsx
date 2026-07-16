@@ -1,4 +1,5 @@
 import FadeUp from './FadeUp'
+import StealThisSite from './StealThisSite'
 
 const facts = [
   { value: '2021', label: 'Building software since' },
@@ -24,53 +25,29 @@ export default function About() {
         <FadeUp delay={0.2}>
           <div className="space-y-5 leading-relaxed text-mist">
             <p>
-              As a software engineer, I design and ship full-stack systems end to end:
-              Go and TypeScript backends, real-time WebSocket infrastructure, REST and
-              gRPC APIs, ML pipelines, and the React front ends on top. I lead a small
-              remote engineering team, own architecture through deployment, and back it
-              all with end-to-end test infrastructure.
+              I build, manage, and maintain the systems businesses run on: full
+              products, web applications, platforms that talk to your customers while
+              you sleep, pipelines that move data where it needs to be, and automation
+              that turns a week of manual work into a button. I lead a small remote
+              engineering team and stay close to the hard parts from the first
+              architecture sketch to the moment the system is live and earning its keep.
             </p>
             <p>
-              On the quant side, I design and run live systematic trading strategies on
-              digital assets, backed by a custom backtesting framework, and publish
-              macro research on global liquidity that has drawn engagement from
-              institutional quants and CIOs. Previously a Quantitative Research Intern
-              at Syntagma Labs, a Web3 &amp; AI advisory lab.
+              The same thinking runs my work in markets. I build my own quantitative
+              research systems, use them to look for alpha, and put my own capital behind
+              the ideas that survive. That means coming up with a thesis, taking it
+              apart through backtesting, robustness testing, and optimization sequences,
+              then asking whether it can survive real markets. Whether the problem is a
+              sales funnel or a portfolio, the craft is the same: turn messy data into
+              decisions you can trust, then automate the follow-through.
             </p>
             <p>
-              I openly work with AI tools such as Claude Code, Codex, and Copilot which are part
-              of my daily toolchain, driven with the same discipline as any other
-              engineering tool, from architecture reviews to prompt evaluation pipelines.
+              I use AI tools such as Claude Code, Codex, and Copilot openly as part of
+              my daily toolchain. I treat them like any other engineering tool: useful,
+              powerful, and only as good as the review process around them.
             </p>
 
-            <a
-              href="https://paypal.me/rubzl"
-              target="_blank"
-              rel="noreferrer"
-              className="group !mt-8 inline-flex items-center gap-4 rounded-2xl border border-white/15 bg-white/[0.03] px-5 py-3.5 transition-colors hover:border-white/40"
-            >
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                aria-hidden="true"
-                className="shrink-0 text-paper"
-              >
-                <circle cx="12" cy="12" r="9" />
-                <path d="M12 7.5v9M9.5 9.5c0-1 1.1-1.7 2.5-1.7s2.5.7 2.5 1.7-1 1.4-2.5 1.7c-1.5.3-2.5.8-2.5 1.8s1.1 1.7 2.5 1.7 2.5-.7 2.5-1.7" />
-              </svg>
-              <span>
-                <span className="block text-sm font-medium text-paper">Buy my AI tokens</span>
-                <span className="block text-xs text-mist">
-                  Like buying me a coffee, except it pays my AI bill. Yes, this is a tip jar haha.
-                </span>
-              </span>
-              <span className="text-mist transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
-            </a>
+            <StealThisSite />
           </div>
         </FadeUp>
       </div>

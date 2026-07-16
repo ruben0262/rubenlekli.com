@@ -53,13 +53,16 @@ export default function HeroCard() {
 
               <div>
                 <p className="mb-4 text-[11px] uppercase tracking-[0.3em] text-mist sm:text-xs">
-                  AI Software Engineer · Full-Stack Developer · Quant Researcher
+                  AI Software Engineer · Quant Researcher
                 </p>
                 <h1 className="text-4xl font-semibold tracking-tight sm:text-6xl">Ruben Lekli</h1>
                 <p className="mt-4 max-w-md text-sm leading-relaxed text-mist sm:text-base">
-                  Leading development teams that ship production AI and software platforms,
-                  and working on the hard problems of quantitative finance: 
-                  separating signal from noise, constructing portfolios, executing live.
+                  Building, managing, and maintaining platforms, web applications,
+                  and AI systems that real businesses rely on, while solving the
+                  complex problems behind the interface. In markets, I build my
+                  own quantitative systems to research alpha, then test ideas
+                  through backtesting, robustness checks, and optimization sequences
+                  before they face real markets.
                 </p>
               </div>
 

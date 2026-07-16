@@ -78,7 +78,7 @@ export const projects: Project[] = [
     name: 'FlowSolutions',
     role: 'Founder & Lead Developer',
     description:
-      'Software and automation studio. We design and build custom software, automation, and practical AI tools that cut manual work, connect disconnected systems, and help teams run more efficiently.',
+      'Software and automation studio for teams with messy operations. We build custom apps, automations, and practical AI tools that remove manual work, connect the systems already in use, and make day-to-day work less fragile.',
     tags: ['Custom software', 'Automation', 'AI tools'],
     href: 'https://flow-solutions.xyz',
     linkLabel: 'flow-solutions.xyz',
@@ -88,7 +88,7 @@ export const projects: Project[] = [
     name: 'LeadOps',
     role: 'Lead Developer',
     description:
-      'AI-powered lead qualification platform. Qualifies inbound leads in real time across WhatsApp, Instagram, Messenger, Discord, Telegram, and Gmail with natural AI conversations, built on a Go backend with real-time WebSocket infrastructure.',
+      'Lead qualification system for businesses that get messages from everywhere. It handles inbound conversations across WhatsApp, Instagram, Messenger, Discord, Telegram, and Gmail, then keeps the sales team updated in real time from a Go backend.',
     tags: ['Go', 'AI agents', 'Multi-channel', 'Real-time'],
     href: 'https://leadops.flow-solutions.xyz',
     linkLabel: 'leadops.flow-solutions.xyz',
@@ -98,7 +98,7 @@ export const projects: Project[] = [
     name: 'Morioh Backtesting',
     role: 'Designer & Developer',
     description:
-      'Free public backtesting platform for equities and digital assets. Test single strategies or construct multi-factor portfolios, with institutional-grade validation built in to keep results honest, and interactive charts to explore them. Python engine, React front end, open for anyone to use.',
+      'Free public backtesting platform for equities and digital assets. Test a single strategy, combine factors into a portfolio, and inspect the result with charts and validation checks that make overfitting harder to hide. Python engine, React front end, open for anyone to use.',
     tags: ['Python', 'FastAPI', 'React', 'Quant tooling'],
     href: 'https://moriohbacktests.rubenlekli.com',
     linkLabel: 'Try Morioh live',
@@ -108,7 +108,7 @@ export const projects: Project[] = [
     name: 'Global Liquidity Research',
     role: 'Independent Researcher',
     description:
-      'Published quantitative research showing global liquidity Granger-causes Bitcoin and Gold, built on VAR models and impulse response analysis. Engaged by 100+ institutional quants, CIOs, and prop traders on LinkedIn.',
+      'Published quantitative research on the relationship between global liquidity, Bitcoin, and Gold using VAR models, Granger causality, and impulse response analysis. The work drew responses from institutional quants, CIOs, and prop traders on LinkedIn.',
     tags: ['Quant research', 'VAR models', 'Macro'],
     href: 'https://www.linkedin.com/in/ruben-lekli-qnt123/',
     linkLabel: 'Read on LinkedIn',
@@ -118,7 +118,7 @@ export const projects: Project[] = [
     name: 'Quantitative Investing System',
     role: 'Designer & Developer',
     description:
-      'Live systematic strategies on digital assets with a multi-year track record, powered by a custom Python backtesting framework: walk-forward validation, multi-factor portfolio construction, and statistical bias correction across 189 unit tests.',
+      'My private research and execution stack for digital-asset strategies. It starts with alpha ideas, runs them through a custom Python backtester, walk-forward validation, portfolio construction, and bias checks, then tracks what is strong enough to trade live.',
     tags: ['Python', 'Systematic trading', 'Portfolio construction'],
     logo: QuantLogo,
   },
@@ -126,7 +126,7 @@ export const projects: Project[] = [
     name: 'Automated Data Pipeline & ML Classifier',
     role: 'Designer & Developer',
     description:
-      'Multi-source data collection pipeline with a self-improving ML classifier trained on real decisions, running 24/7 as a three-service Docker stack on a hardened Linux VPS with a Telegram control bot.',
+      'Data pipeline that collects from multiple sources, classifies new items from past decisions, and keeps running without babysitting. It runs as a three-service Docker stack on a hardened Linux VPS, with a Telegram bot for control and alerts.',
     tags: ['Python', 'Docker', 'Machine learning', 'Linux'],
     logo: PipelineLogo,
   },

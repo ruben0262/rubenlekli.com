@@ -13,15 +13,15 @@ Personal portfolio / calling card for Ruben Lekli. Purpose: link shared on Linke
 |---|---|---|
 | 3D flip business card (pinned 260vh, rotates on scroll; front = intro, back = contact) | `intro` | `HeroCard.tsx` |
 | Skills marquee (seamless CSS loop, two identical halves) | — | `Marquee.tsx` |
-| About + stats + tip button | `about` | `About.tsx` |
-| Project cards (data + inline SVG logos in `src/data/projects.tsx`) | `projects` | `Projects.tsx` |
+| About + stats + "Steal this site" prompt button | `about` | `About.tsx`, `StealThisSite.tsx`, prompt text in `src/data/sitePrompt.ts` |
+| Project cards: folder + scroll-scrubbed reveal (data + inline SVG logos in `src/data/projects.tsx`) | `projects` | `Projects.tsx` |
 | Reference quote carousel (auto-rotates when ≥2 entries) | `references` | `References.tsx` |
 | Slim footer (© + social links only — no contact block by request) | — | `Footer.tsx` |
 
 Cross-cutting: `Background.tsx` (scroll-linked signal wave with trend/mean-reversion regimes, glow orbs, parallax dot grid), `SideNav.tsx` (dots < lg, lines + labels ≥ lg), `FadeUp.tsx`, `useActiveSection.ts`.
 
 ## Design rules (from Ruben, do not violate)
-- Black and white only; the single exception is the green "Available for work" pulse dot on the card.
+- Black and white only; exceptions: the green "Available for work" pulse dot on the card, and the AI brand colours on the "Steal this site" glyphs (both requested by Ruben).
 - No em-dashes in site copy. No locations mentioned anywhere. Tab title is just "Ruben Lekli".
 - Card front intro avoids "I" and does not name FlowSolutions; About section speaks day-to-day (SE paragraph parallel to quant paragraph).
 - Keep it simple: proof lists / extra sections were tried and removed. Don't add complexity without being asked.
@@ -31,7 +31,7 @@ Cross-cutting: `Background.tsx` (scroll-linked signal wave with trend/mean-rever
 Raw `useScroll` MotionValues get promoted to a native ScrollTimeline that mismeasures the pinned hero section. Route any scroll-linked style through `useSpring` (or derive from a sprung value) — see `hintOpacity` in `HeroCard.tsx`.
 
 ## Verification workflow
-Screenshot-verify changes before calling them done: `npm run build`, `npx vite preview --port 4173`, then puppeteer-core + Edge (`C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe` — plain Chrome is not installed). Capture desktop 1440×900, tablet 820×1180, mobile 390×844; scroll positions for card front/mid/back, about, references. Scripts from past sessions live in the session scratchpad (recreate as needed). Kill the preview server when done.
+Screenshot-verify changes before calling them done: `npm run build`, `npx vite preview --port 4173`, then puppeteer with its bundled Chrome for Testing (`npx puppeteer browsers install chrome` once per scratchpad; headless Edge silently fails with exit 0 whenever the user's Edge session is open, so don't use it). Capture desktop 1440×900, tablet 820×1180, mobile 390×844; scroll positions for card front/mid/back, about, references. Scripts from past sessions live in the session scratchpad (recreate as needed). Kill the preview server when done.
 
 ## SEO / meta
 `index.html` carries OG + Twitter tags and JSON-LD Person schema. `public/og.png` (1200×630) is a render of the card front — regenerate from an HTML replica via headless Edge screenshot if the card design changes. `public/_headers` sets CSP and security headers (analytics beacon domains pre-allowed). `robots.txt` + `sitemap.xml` present.
