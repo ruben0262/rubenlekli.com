@@ -182,7 +182,7 @@ export default function Projects() {
       <FadeUp delay={0.15}>
         <p className="mb-10 max-w-2xl text-mist">
           Need something like this built for your business? I take on client work
-          through FlowSolutions:{' '}
+          through FlowSolutions{' '}
           <a
             href="https://flow-solutions.xyz/inquire"
             target="_blank"

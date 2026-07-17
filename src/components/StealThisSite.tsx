@@ -30,7 +30,7 @@ export default function StealThisSite() {
       type="button"
       onClick={copy}
       style={{ transition: 'transform 2s cubic-bezier(0.21, 0.47, 0.32, 0.98), border-color 2s ease' }}
-      className="group !mt-8 flex w-full max-w-xl items-center gap-4 rounded-2xl border border-white/15 bg-white/[0.03] px-5 py-4 text-left hover:scale-[1.03] hover:border-white/40"
+      className="group !mt-8 flex w-full max-w-xl items-center gap-4 rounded-2xl border border-white/15 bg-white/[0.03] px-5 py-4 text-left hover:border-white/40"
     >
       <span className="flex shrink-0 -space-x-2.5" aria-hidden="true">
         {assistants.map((assistant) => (

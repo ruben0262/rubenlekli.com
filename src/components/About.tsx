@@ -18,33 +18,32 @@ export default function About() {
       <div className="grid gap-12 md:grid-cols-2">
         <FadeUp delay={0.1}>
           <h2 className="text-3xl font-semibold leading-snug tracking-tight sm:text-4xl">
-            Engineering products by day, researching markets by night.
+            Turning complex requirements into production systems.
           </h2>
         </FadeUp>
 
         <FadeUp delay={0.2}>
           <div className="space-y-5 leading-relaxed text-mist">
             <p>
-              I build, manage, and maintain the systems businesses run on: full
-              products, web applications, platforms that talk to your customers while
-              you sleep, pipelines that move data where it needs to be, and automation
-              that turns a week of manual work into a button. I lead a small remote
-              engineering team and own the complex problems from the first architecture
-              sketch to the moment the system is live and earning its keep.
+              My work starts where an idea needs to become something people can actually
+              use. I shape the architecture, build the product, manage delivery with a
+              small remote engineering team, and stay responsible for the maintenance
+              after launch. Most projects are built with clients, founders, or team
+              leads who need AI-powered applications, workflow infrastructure, data
+              pipelines, internal tools, new products, or optimizations to existing
+              systems.
             </p>
             <p>
-              The same thinking runs my work in markets. I build my own quantitative
-              research systems, use them to look for alpha, and put my own capital behind
-              the ideas that survive. That means generating strategy ideas, taking them
-              apart through backtesting, robustness testing, and optimization sequences,
-              then asking whether they can operate in real markets. Whether the problem
-              is a sales funnel or a portfolio, the craft is the same: turn messy data
-              into decisions you can trust, then automate the follow-through.
+              Quant dev is part of the same engineering practice, just closer to the
+              way I naturally think. My specialized strengths sit in finance, mathematical reasoning,
+              optimization, and analysis, so I build research, backtesting, portfolio,
+              and robustness tooling to test market ideas properly, both for my own work
+              and for clients.
             </p>
             <p>
-              I openly work with AI tools such as Claude Code, Codex, and Copilot which are part
-              of my daily toolchain, driven with the same discipline as any other
-              engineering tool, from architecture reviews to prompt evaluation pipelines.
+              AI tools are part of how I work, but they do not replace the standard.
+              The work still has to be structured clearly, reviewed properly, and
+              maintained like any other production system.
             </p>
 
             <StealThisSite />
