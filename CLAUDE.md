@@ -33,6 +33,9 @@ Raw `useScroll` MotionValues get promoted to a native ScrollTimeline that mismea
 ## Verification workflow
 Screenshot-verify changes before calling them done: `npm run build`, `npx vite preview --port 4173`, then puppeteer with its bundled Chrome for Testing (`npx puppeteer browsers install chrome` once per scratchpad; headless Edge silently fails with exit 0 whenever the user's Edge session is open, so don't use it). Capture desktop 1440×900, tablet 820×1180, mobile 390×844; scroll positions for card front/mid/back, about, references. Scripts from past sessions live in the session scratchpad (recreate as needed). Kill the preview server when done.
 
+## Prerender (SEO)
+`npm run build` = `tsc && vite build && node scripts/prerender.mjs`. The prerender step serves `dist/`, loads the page in headless Chrome (puppeteer devDep), scrolls through it so every `once:true` whileInView reaches its visible state, and injects `#root`'s HTML into `dist/index.html`. `src/main.tsx` hydrates when `#root` has children (production) and falls back to `createRoot` (dev). Crawlers get full static content; one React #418 hydration-mismatch warning on animated subtrees is expected and harmless (React client-renders those). If the prerender ever produces <5 kB it throws and fails the build — investigate, don't bypass.
+
 ## SEO / meta
 `index.html` carries OG + Twitter tags and JSON-LD Person schema. `public/og.png` (1200×630) is a render of the card front — regenerate from an HTML replica via headless Edge screenshot if the card design changes. `public/_headers` sets CSP and security headers (analytics beacon domains pre-allowed). `robots.txt` + `sitemap.xml` present.
 

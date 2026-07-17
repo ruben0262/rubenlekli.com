@@ -2,6 +2,11 @@
 
 Newest first. Format: what / where / why.
 
+## 2026-07-16 — Build-time prerender + meta refresh
+- SEO concern (SPA ships empty HTML): added `scripts/prerender.mjs` to the build chain — serves dist, renders in headless Chrome, scrolls to trigger all once-only reveals, injects ~40 kB of real HTML into `dist/index.html`. `main.tsx` now hydrates over it (falls back to createRoot in dev). Verified: Morioh/references/contact text present in raw HTML, page still interactive after hydration (one expected #418 mismatch warning on animated subtrees).
+- Meta refreshed to current positioning (description mentions Morioh; og/twitter titles "AI Software Engineer · Quant Researcher"; JSON-LD gains knowsAbout + Morioh in sameAs) and `public/og.png` re-rendered with the current card titles/sub-line.
+- Note: full SSR framework migration (Next/Astro) deliberately avoided — single-page site, prerender gives crawlers identical content at zero architectural cost.
+
 ## 2026-07-16 — Settled on the ghost-card interlude version
 - After trying both measured-flight variants, Ruben picked the earlier stable version as final: pinned 180vh interlude where ghost file cards (logo + title) pop out of the centred folder one after another toward the viewer while the folder shrinks/blurs/fades, followed by the real grid cards scrubbing in (y:-110, scale 0.72, ±5°). Projects.tsx and sitePrompt restored to exactly that; measured-delta code removed.
 
