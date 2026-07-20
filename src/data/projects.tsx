@@ -78,7 +78,7 @@ export const projects: Project[] = [
     name: 'FlowSolutions',
     role: 'Founder & Lead Developer',
     description:
-      'Software and automation studio for teams with messy operations. We build custom apps, automations, and practical AI tools that remove manual work, connect the systems already in use, and make day-to-day work less fragile.',
+      'Software and automation studio for teams with operational problems that need more than another spreadsheet. We build custom apps, automations, and practical AI tools that reduce manual work, connect existing systems, and make day-to-day operations easier to run.',
     tags: ['Custom software', 'Automation', 'AI tools'],
     href: 'https://flow-solutions.xyz',
     linkLabel: 'flow-solutions.xyz',
@@ -88,7 +88,7 @@ export const projects: Project[] = [
     name: 'LeadOps',
     role: 'Lead Developer',
     description:
-      'Lead qualification system for businesses that get messages from everywhere. It handles inbound conversations across WhatsApp, Instagram, Messenger, Discord, Telegram, and Gmail, then keeps the sales team updated in real time from a Go backend.',
+      'Lead qualification system for teams handling inbound messages across too many channels. It runs AI conversations across WhatsApp, Instagram, Messenger, Discord, Telegram, and Gmail, then keeps the sales team updated in real time from a Go backend.',
     tags: ['Go', 'AI agents', 'Multi-channel', 'Real-time'],
     href: 'https://leadops.flow-solutions.xyz',
     linkLabel: 'leadops.flow-solutions.xyz',
@@ -118,7 +118,7 @@ export const projects: Project[] = [
     name: 'Mahoraga',
     role: 'Designer & Developer',
     description:
-      'Self-hosted job-search radar built around an automated data pipeline and ML classifier. It watches job sources, dedups and scores new roles, sends the good ones to Telegram, and builds ATS-ready CVs from tested, prompt-engineered workflows.',
+      'Self-hosted job-search radar built around an automated data pipeline and ML classifier. It watches job sources, dedups and scores new roles, sends the strongest matches to Telegram, and builds ATS-ready CVs from tested, prompt-engineered workflows.',
     tags: ['Automated data pipeline', 'ML classifier', 'Docker', 'Telegram'],
     href: 'https://mahoraga.rubenlekli.com',
     linkLabel: 'Try Mahoraga',

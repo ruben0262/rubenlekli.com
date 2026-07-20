@@ -25,20 +25,18 @@ export default function About() {
         <FadeUp delay={0.2}>
           <div className="space-y-5 leading-relaxed text-mist">
             <p>
-              My work starts where an idea needs to become something people can actually
-              use. I shape the architecture, build the product, manage delivery with a
-              small remote engineering team, and stay responsible for the maintenance
-              after launch. Most projects are built with clients, founders, or team
-              leads who need AI-powered applications, workflow infrastructure, data
-              pipelines, internal tools, new products, or optimizations to existing
-              systems.
+              I turn non-technical client requirements, messy product ideas, and real
+              engineering constraints into production systems. The work goes past the
+              demo, into the parts that decide whether software actually holds up after
+              launch. Most projects are built with clients, founders, or team leads who
+              need AI-powered applications, workflow infrastructure, data pipelines,
+              internal tools, new products, or optimizations to existing systems.
             </p>
             <p>
-              Quant dev is part of the same engineering practice, just closer to the
-              way I naturally think. My specialized strengths sit in finance, mathematical reasoning,
-              optimization, and analysis, so I build research, backtesting, portfolio,
-              and robustness tooling to test market ideas properly, both for my own work
-              and for clients.
+              Quant dev is part of the same engineering practice, with more finance,
+              mathematics, optimization, and analysis in the loop. I build research,
+              backtesting, portfolio, and robustness tooling to test market ideas
+              properly, both for my own work and for clients.
             </p>
             <p>
               AI tools are part of how I work, but they do not replace the standard.

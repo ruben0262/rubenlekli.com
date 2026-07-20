@@ -176,7 +176,7 @@ export default function Projects() {
       </FadeUp>
       <FadeUp delay={0.1}>
         <h2 className="mb-6 max-w-2xl text-3xl font-semibold tracking-tight sm:text-4xl">
-          Most of my work lives in private repos. Here is what you can see.
+          Most production work lives in private repos. Here is what you can inspect.
         </h2>
       </FadeUp>
       <FadeUp delay={0.15}>
