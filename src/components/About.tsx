@@ -25,23 +25,26 @@ export default function About() {
         <FadeUp delay={0.2}>
           <div className="space-y-5 leading-relaxed text-mist">
             <p>
-              I turn non-technical client requirements, messy product ideas, and real
-              engineering constraints into production systems. The work goes past the
-              demo, into the parts that decide whether software actually holds up after
-              launch. Most projects are built with clients, founders, or team leads who
-              need AI-powered applications, workflow infrastructure, data pipelines,
+              Turning non-technical client requirements, messy product ideas, and real
+              engineering constraints into production systems. Scope and priority decisions 
+              happen early, and stay firm under pressure: what ships first, what gets cut, 
+              and what risks breaking if the timeline shrinks. Most
+              projects get built with clients, founders, or team leads who need
+              AI-powered applications, workflow infrastructure, data pipelines,
               internal tools, new products, or optimizations to existing systems.
             </p>
-            <p>
-              Quant dev is part of the same engineering practice, with more finance,
-              mathematics, optimization, and analysis in the loop. I build research,
+            <p> 
+              Quant dev is part of the same engineering work, with more finance, 
+              mathematics, statistics, and optimization in the loop. In practice, that's building research,
               backtesting, portfolio, and robustness tooling to test market ideas
-              properly, both for my own work and for clients.
+              properly, for client work and for strategies traded independently.
             </p>
             <p>
-              AI tools are part of how I work, but they do not replace the standard.
-              The work still has to be structured clearly, reviewed properly, and
-              maintained like any other production system.
+              AI tools are part of how the work gets done; mostly used for 
+              speed and to sketch out scaffolding. Output correctness remains under careful 
+              review, ensured by the test harness, the criteria, and a strong oracle, to spot
+              any errors that may slip through. The work still has to be structured 
+              clearly, reviewed properly, and maintained like any other production system.
             </p>
 
             <StealThisSite />

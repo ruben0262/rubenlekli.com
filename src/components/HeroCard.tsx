@@ -5,7 +5,6 @@ const contactRows = [
   { label: 'Email', value: 'lekliruben@gmail.com', href: 'mailto:lekliruben@gmail.com' },
   { label: 'LinkedIn', value: 'in/ruben-lekli-qnt123', href: 'https://www.linkedin.com/in/ruben-lekli-qnt123/' },
   { label: 'GitHub', value: 'ruben0262', href: 'https://github.com/ruben0262' },
-  { label: 'Instagram', value: '@ruben_zl', href: 'https://www.instagram.com/ruben_zl/' },
 ]
 
 const cardFaceClass =
@@ -59,19 +58,19 @@ export default function HeroCard() {
                 <p className="mt-4 max-w-md text-sm leading-relaxed text-mist sm:text-base">
                   For over half a decade, building, managing, and maintaining
                   production software, from AI-powered applications and workflow
-                  infrastructure to data pipelines and quant-dev tooling.
+                  infrastructure to data pipelines and quant-dev tools.
                 </p>
               </div>
 
               <div className="flex items-center justify-between text-xs text-mist">
                 <span>rubenlekli.com</span>
-                <span className="flex items-center gap-2">
+                {/* <span className="flex items-center gap-2">
                   <span className="relative flex h-2 w-2">
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400/60" />
                     <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
                   </span>
                   Available for work
-                </span>
+                </span> */}
               </div>
 
               {/* Moving gloss sheen */}
@@ -110,7 +109,13 @@ export default function HeroCard() {
               </ul>
 
               <div className="flex items-center justify-between text-xs text-mist">
-                <span>Available for contract &amp; full-time work</span>
+                <span className="flex items-center gap-2">
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400/60" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+                  </span>
+                  Available for work
+                </span>
                 <span>rubenlekli.com</span>
               </div>
             </div>

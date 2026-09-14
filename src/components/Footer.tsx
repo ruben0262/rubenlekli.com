@@ -2,7 +2,6 @@ const socials = [
   { label: 'Email', href: 'mailto:lekliruben@gmail.com' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/ruben-lekli-qnt123/' },
   { label: 'GitHub', href: 'https://github.com/ruben0262' },
-  { label: 'Instagram', href: 'https://www.instagram.com/ruben_zl/' },
   { label: 'FlowSolutions', href: 'https://flow-solutions.xyz' },
 ]
 
