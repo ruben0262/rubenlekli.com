@@ -40,7 +40,7 @@ function Half() {
 
 export default function Marquee() {
   return (
-    <div className="relative z-10 overflow-hidden border-y border-white/10 bg-ink/60 py-5 backdrop-blur-sm" aria-hidden="true">
+    <div className="relative z-10 overflow-hidden border-y border-white/10 bg-ink/85 py-5" aria-hidden="true">
       <div className="marquee-track flex w-max">
         <Half />
         <Half />

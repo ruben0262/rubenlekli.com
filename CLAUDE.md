@@ -30,6 +30,17 @@ Cross-cutting: `Background.tsx` (scroll-linked signal wave with trend/mean-rever
 ## Known gotcha
 Raw `useScroll` MotionValues get promoted to a native ScrollTimeline that mismeasures the pinned hero section. Route any scroll-linked style through `useSpring` (or derive from a sprung value) — see `hintOpacity` in `HeroCard.tsx`.
 
+## Scroll-performance rules (do not regress these)
+A 2026-09-16 pass cut per-scroll render work in half (1161ms → 592ms at 4x CPU throttle, 390×844; rasterisation 752ms → 226ms). What caused it, and what must not come back:
+- **Never animate `filter: blur()`, and never move or scale a blurred element.** Blurred surfaces re-rasterise on every change. The two background glow orbs were solid discs behind `blur-[120px]` that also animated `scale` — that alone was ~50% of the page's render work. They are `radial-gradient` backgrounds now.
+- **Never put `mask-image` on an element that moves.** The dot grid's edge fade was a mask on the parallax layer; it is now a plain grid plus a *static* vignette div over it.
+- **No `backdrop-filter` on anything the page scrolls past.** A solid tint reads identically on this background.
+- Keep `box-shadow` blur radii modest on elements that rotate or scale (the hero card rotates in 3D).
+- **Scrub springs are stiff on purpose**: hero 200/32, folder 170/28, project cards 190/28, background 90/26 (softest, it should trail). The old ~80/18 springs trailed the finger ~0.45s, which reads as lag regardless of frame rate.
+- All pinned sections use `svh`, not `vh`, so the mobile address bar cannot resize a pin mid-scroll.
+- Scroll budgets are deliberate: hero `220svh` (rotation mapped 0.04→0.92 so there is no dead pinned scroll), folder `245svh` (the six-card sequence needs ~1.4 screens or a single phone flick skips it). Mobile total is ~11.4 screens.
+- To re-measure: CPU-throttled headless Chrome trace, scroll the full page, sum `RasterTask`/`FunctionCall`/`Layerize`/`UpdateLayoutTree`. Run 5x — single runs on a busy machine produce 3x outliers.
+
 ## Verification workflow
 Screenshot-verify changes before calling them done: `npm run build`, `npx vite preview --port 4173`, then puppeteer with its bundled Chrome for Testing (`npx puppeteer browsers install chrome` once per scratchpad; headless Edge silently fails with exit 0 whenever the user's Edge session is open, so don't use it). Capture desktop 1440×900, tablet 820×1180, mobile 390×844; scroll positions for card front/mid/back, about, references. Scripts from past sessions live in the session scratchpad (recreate as needed). Kill the preview server when done.
 

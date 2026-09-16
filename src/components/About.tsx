@@ -10,12 +10,12 @@ const facts = [
 
 export default function About() {
   return (
-    <section id="about" className="relative z-10 mx-auto max-w-6xl px-6 py-28">
+    <section id="about" className="relative z-10 mx-auto max-w-6xl px-6 py-20 sm:py-28">
       <FadeUp>
         <p className="mb-4 text-xs uppercase tracking-[0.35em] text-mist">About</p>
       </FadeUp>
 
-      <div className="grid gap-12 md:grid-cols-2">
+      <div className="grid gap-10 md:grid-cols-2 md:gap-12">
         <FadeUp delay={0.1}>
           <h2 className="text-3xl font-semibold leading-snug tracking-tight sm:text-4xl">
             Turning complex requirements into production systems.
@@ -52,12 +52,12 @@ export default function About() {
         </FadeUp>
       </div>
 
-      <div className="mt-20 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 md:grid-cols-4">
+      <div className="mt-16 grid grid-cols-2 gap-px sm:mt-20 overflow-hidden rounded-2xl border border-white/10 bg-white/10 md:grid-cols-4">
         {facts.map((fact, i) => (
-          <div key={fact.label} className="bg-ink p-8">
+          <div key={fact.label} className="bg-ink p-5 sm:p-8">
             <FadeUp delay={i * 0.08}>
-              <p className="text-4xl font-semibold tracking-tight">{fact.value}</p>
-              <p className="mt-3 text-sm text-mist">{fact.label}</p>
+              <p className="text-3xl font-semibold tracking-tight sm:text-4xl">{fact.value}</p>
+              <p className="mt-2 text-xs leading-snug text-mist sm:mt-3 sm:text-sm">{fact.label}</p>
             </FadeUp>
           </div>
         ))}

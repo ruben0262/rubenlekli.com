@@ -31,6 +31,20 @@ function generateWavePath(width = 1440, height = 900): string {
 
 const wavePath = generateWavePath()
 
+/* The orbs used to be solid discs behind `filter: blur(120px)`. A blurred
+   surface has to be re-rasterised whenever it moves or scales, and these move
+   AND scale on every scroll frame — that alone was ~50% of the page's total
+   render work. A radial gradient paints the same soft glow as a plain
+   background, so the layer rasterises once and the scroll only composites it.
+   Sizes are ~2x the old boxes because blur() used to spread them well past
+   their own bounds. */
+const orbA =
+  'radial-gradient(circle closest-side, rgba(255,255,255,0.075), rgba(255,255,255,0.05) 28%, ' +
+  'rgba(255,255,255,0.018) 58%, rgba(255,255,255,0) 78%)'
+const orbB =
+  'radial-gradient(circle closest-side, rgba(255,255,255,0.055), rgba(255,255,255,0.036) 28%, ' +
+  'rgba(255,255,255,0.013) 58%, rgba(255,255,255,0) 78%)'
+
 /**
  * Fixed full-viewport background that drifts with page scroll:
  * a signal wave that draws itself as you scroll, two glow orbs
@@ -38,12 +52,17 @@ const wavePath = generateWavePath()
  */
 export default function Background() {
   const { scrollYProgress } = useScroll()
-  const progress = useSpring(scrollYProgress, { stiffness: 60, damping: 20 })
+  // Deliberately the softest spring on the site: the background is meant to
+  // trail the content rather than track the finger.
+  const progress = useSpring(scrollYProgress, { stiffness: 90, damping: 26, restDelta: 0.001 })
 
-  const orbAY = useTransform(progress, [0, 1], ['-10vh', '70vh'])
-  const orbAX = useTransform(progress, [0, 1], ['-5vw', '30vw'])
-  const orbBY = useTransform(progress, [0, 1], ['80vh', '-20vh'])
-  const orbBX = useTransform(progress, [0, 1], ['60vw', '20vw'])
+  // Orbs are laid out centred on the viewport (see the -55vh/-45vh margins
+  // below), so these are drifts away from the centre. Values chosen to land the
+  // glow centres exactly where the old corner-anchored boxes put them.
+  const orbAX = useTransform(progress, [0, 1], ['-38vw', '-3vw'])
+  const orbAY = useTransform(progress, [0, 1], ['-32vh', '47vh'])
+  const orbBX = useTransform(progress, [0, 1], ['24vw', '-16vw'])
+  const orbBY = useTransform(progress, [0, 1], ['52vh', '-47vh'])
   const orbScale = useTransform(progress, [0, 0.5, 1], [1, 1.35, 0.9])
   const gridY = useTransform(progress, [0, 1], ['0%', '-12%'])
 
@@ -53,20 +72,34 @@ export default function Background() {
 
   return (
     <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
-      {/* Parallax dot grid */}
+      {/* Parallax dot grid. The edge fade used to be a mask-image ON this
+          element — masking a layer that moves every frame meant re-rasterising
+          the whole grid on every frame (the single biggest paint cost left
+          after the orbs). The fade is now a static vignette painted over the
+          top instead, so the moving layer is a plain repeating gradient. */}
       <motion.div
         style={{
           y: gridY,
           backgroundImage: 'radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px)',
           backgroundSize: '32px 32px',
         }}
-        className="absolute inset-x-0 -top-[15%] h-[130%] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_40%,black,transparent)]"
+        className="absolute inset-x-0 -top-[15%] h-[130%]"
+      />
+      <div
+        style={{
+          backgroundImage:
+            'radial-gradient(ellipse 70% 60% at 50% 40%, transparent 0%, var(--color-ink) 100%)',
+        }}
+        className="absolute inset-0"
       />
 
-      {/* Signal wave — draws with scroll */}
+      {/* Signal wave — draws with scroll. The viewBox is 1440 wide, so on a
+          phone `preserveAspectRatio="none"` squashed it into a steep scribble.
+          Holding a 900px floor keeps the curve's real slope; the overflow is
+          clipped by the parent. */}
       <motion.svg
         style={{ y: waveY }}
-        className="absolute inset-0 h-full w-full"
+        className="absolute left-1/2 h-full w-[max(100%,900px)] -translate-x-1/2"
         viewBox="0 0 1440 900"
         preserveAspectRatio="none"
         fill="none"
@@ -92,12 +125,18 @@ export default function Background() {
 
       {/* Glow orbs */}
       <motion.div
-        style={{ x: orbAX, y: orbAY, scale: orbScale }}
-        className="absolute h-[55vh] w-[55vh] rounded-full bg-white/[0.06] blur-[120px]"
+        style={{
+          x: orbAX, y: orbAY, scale: orbScale, backgroundImage: orbA,
+          left: '50%', top: '50%', marginLeft: '-55vh', marginTop: '-55vh',
+        }}
+        className="absolute h-[110vh] w-[110vh] rounded-full"
       />
       <motion.div
-        style={{ x: orbBX, y: orbBY, scale: orbScale }}
-        className="absolute h-[45vh] w-[45vh] rounded-full bg-white/[0.045] blur-[100px]"
+        style={{
+          x: orbBX, y: orbBY, scale: orbScale, backgroundImage: orbB,
+          left: '50%', top: '50%', marginLeft: '-45vh', marginTop: '-45vh',
+        }}
+        className="absolute h-[90vh] w-[90vh] rounded-full"
       />
     </div>
   )

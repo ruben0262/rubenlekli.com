@@ -10,7 +10,7 @@ const contactRows = [
 const cardFaceClass =
   'absolute inset-0 flex flex-col justify-between overflow-hidden rounded-3xl border border-white/15 p-8 sm:p-10 ' +
   '[backface-visibility:hidden] bg-[linear-gradient(145deg,#161616_0%,#0b0b0b_55%,#131313_100%)] ' +
-  'shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)]'
+  'shadow-[0_20px_45px_-25px_rgba(0,0,0,0.9)]'
 
 export default function HeroCard() {
   const containerRef = useRef<HTMLElement>(null)
@@ -18,9 +18,15 @@ export default function HeroCard() {
     target: containerRef,
     offset: ['start start', 'end end'],
   })
-  const progress = useSpring(scrollYProgress, { stiffness: 80, damping: 18 })
+  // Stiff enough to stay under the finger (the old 80/18 spring took ~0.45s to
+  // catch up, which read as lag), still damped enough to absorb scroll jitter.
+  const progress = useSpring(scrollYProgress, { stiffness: 200, damping: 32, restDelta: 0.001 })
 
-  const rotateY = useTransform(progress, [0.05, 0.8], [0, 180])
+  // Spans almost the whole pin. The old [0.05, 0.8] window left the last 20% of
+  // the pin (~270px) with nothing animating — the page read as stuck. Shortening
+  // the section and widening the window keeps the flip's scroll-per-degree close
+  // to what it was while removing the dead scroll entirely.
+  const rotateY = useTransform(progress, [0.04, 0.92], [0, 180])
   const sheenX = useTransform(progress, [0, 1], ['-60%', '160%'])
   // Only visible mid-flip; at rest the light slab would sit awkwardly on the static card
   const sheenOpacity = useTransform(progress, [0.03, 0.15, 0.85, 0.95], [0, 1, 1, 0])
@@ -30,8 +36,8 @@ export default function HeroCard() {
   const hintOpacity = useTransform(progress, [0.02, 0.12], [1, 0])
 
   return (
-    <section ref={containerRef} id="intro" className="relative h-[260vh]">
-      <div className="sticky top-0 flex h-screen flex-col items-center justify-center px-6">
+    <section ref={containerRef} id="intro" className="relative h-[220svh]">
+      <div className="sticky top-0 flex h-svh flex-col items-center justify-center px-6">
         <motion.div
           initial={{ opacity: 0, y: 40, scale: 0.96 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -124,7 +130,7 @@ export default function HeroCard() {
 
         <motion.p
           style={{ opacity: hintOpacity }}
-          className="mt-10 flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-mist"
+          className="mt-8 flex items-center gap-3 sm:mt-10 text-xs uppercase tracking-[0.3em] text-mist"
         >
           Scroll to flip the card
           <motion.span

@@ -2,6 +2,34 @@
 
 Newest first. Format: what / where / why.
 
+## 2026-09-16 — Mobile performance, pacing rebalance, responsive sizing
+
+Ruben: the site felt laggy overall on mobile, and the card flip / folder reveal were "too fast, not right pacing or sizes". Measured with a CPU-throttled (4x) headless Chrome trace scrolling the whole page at 390x844, comparing the previous build against this one over 5 runs each.
+
+**Performance (total tracked main-thread render work per scroll-through: 1161ms -> 592ms, -49%. Rasterisation: 752ms -> 226ms, -70%.)**
+- `Background.tsx`: the two glow orbs were solid discs behind `blur-[120px]` / `blur-[100px]` that also animated `scale`. A blurred surface is re-rasterised whenever it moves or scales, so these alone were ~50% of the page's render work (A/B: hiding them cut raster 581ms -> 150ms). Replaced with `radial-gradient` backgrounds and no filter: same soft glow, layer rasterises once and scroll only composites it. Boxes are ~2x bigger (110vh/90vh) because `blur()` used to spread them past their bounds, and they are now centre-anchored (`left/top 50%` + negative margins) with drifts expressed from the centre, so the glow lands exactly where it did before.
+- `Background.tsx`: the parallax dot grid's edge fade was a `mask-image` **on the moving element**, which re-rasterised the whole grid every frame. It became the biggest remaining cost once the orbs were fixed (A/B: 530ms -> 396ms total, raster 229ms -> 76ms). The grid is now a plain repeating gradient and the fade is a static vignette div painted over it.
+- `Background.tsx`: the wave SVG had `preserveAspectRatio="none"` against a 1440-wide viewBox, so on a phone it squashed into a steep scribble. Now `w-[max(100%,900px)]` centred, which keeps the curve's real slope (overflow is clipped by the parent).
+- `Marquee.tsx`: dropped `backdrop-blur-sm` (re-samples everything behind a full-width strip each frame) for `bg-ink/85`. Indistinguishable on a dark background.
+- `Projects.tsx`: removed the scroll-animated `filter: blur()` on the receding folder; it recedes on scale + opacity now.
+- `HeroCard.tsx`: card shadow blur 80px -> 45px. It is all but invisible against #060606 but had to be re-rasterised through every frame of the 3D rotation.
+- Investigated and ruled out: intermittent 3x raster spikes looked like they might come from the randomly generated wave path. Nine seeded runs showed path height varying 198px -> 624px with no cost difference (118-170ms), and the same spikes appeared in variants with no wave. It is measurement noise on the dev machine, not a site issue. Final build measures 589-615ms across 5 consecutive runs with no outliers.
+
+**Pacing** — the scroll budgets were backwards: the hero flip (one rotation) got 1013px of scroll on mobile while the folder reveal (folder opens, six cards leave one by one, folder recedes) got 675px, less than a single thumb flick.
+- Folder segment 180vh -> 245svh: the sequence now gets **1224px** on mobile (1.8x). Ghost stagger 0.11 -> 0.112, span 0.34 -> 0.33, folder fade 0.68-0.92 -> 0.70-0.94 so it holds until the last card (launching at 0.61) is clear, with settle room before the pin ends.
+- Hero 260vh -> 220svh with the rotation window widened 0.05-0.8 -> 0.04-0.92. The old mapping left the last ~270px of the pin with nothing animating, which read as the page being stuck. Flip is now ~891px of scroll with zero dead time. (A first pass cut the hero to 190svh, which would have made the flip *faster* than before — the opposite of the complaint — so it was reverted to this.)
+- Project cards: scrub window 42vh -> 58vh, and the deltas softened (y -110 -> -72, scale 0.72 -> 0.86, rotation +/-5 -> +/-3.5). Over the longer window the old deltas over-travelled and read as a lurch rather than a settle.
+- Net page length on mobile: 11.8 -> **11.4** screens, so the slower reveal did not cost any extra scrolling.
+- All scrub springs stiffened: hero 80/18 -> 200/32, folder 80/20 -> 170/28, project cards 90/20 -> 190/28, background 60/20 -> 90/26, all with `restDelta`. The old ~critically-damped-but-soft springs trailed the finger by roughly 0.45s, which reads as lag independently of frame rate. The background stays the softest on purpose (it should trail).
+
+**Mobile frames and sizing**
+- All pinned sections use `svh` (`h-[220svh]`, `h-svh`, `h-[245svh]`) instead of `vh`, so the mobile address bar showing/hiding cannot resize a pin mid-scroll. Verified no clipping at 360x640 and 375x667.
+- About stat tiles: `p-8` -> `p-5 sm:p-8`, value `text-4xl` -> `text-3xl sm:text-4xl`, caption `text-sm` -> `text-xs sm:text-sm`. Long captions were wrapping to four lines and making the tiles very uneven.
+- Project cards `p-6 sm:p-8`; long link labels (`leadops.flow-solutions.xyz`) dropped from `text-xs tracking-[0.2em]` to `text-[10px] tracking-[0.1em]` on mobile so they stay on one line instead of wrapping into the logo, arrow given `shrink-0`.
+- References: card `p-6 sm:p-10 md:p-14`, quote `text-xl sm:text-2xl md:text-3xl`, and the decorative quote mark `text-[5rem]` on mobile (was `text-[10rem]`, which sat directly on top of the first line of the quote).
+- Section padding `py-20 sm:py-28` on About / Projects / References; folder SVG `min(56vw,260px)` -> `min(62vw,280px)`; ghost cards `w-44 sm:w-52`.
+- `sitePrompt.ts` updated to match: new scroll budgets, and a new "CRITICAL performance rules" block (never animate blur, never mask a moving element, avoid backdrop-filter on scrolled content, use stiff springs) so stolen copies do not inherit the same lag.
+
 ## 2026-07-16 — Build-time prerender + meta refresh
 - SEO concern (SPA ships empty HTML): added `scripts/prerender.mjs` to the build chain — serves dist, renders in headless Chrome, scrolls to trigger all once-only reveals, injects ~40 kB of real HTML into `dist/index.html`. `main.tsx` now hydrates over it (falls back to createRoot in dev). Verified: Morioh/references/contact text present in raw HTML, page still interactive after hydration (one expected #418 mismatch warning on animated subtrees).
 - Meta refreshed to current positioning (description mentions Morioh; og/twitter titles "AI Software Engineer · Quant Researcher"; JSON-LD gains knowsAbout + Morioh in sameAs) and `public/og.png` re-rendered with the current card titles/sub-line.
